@@ -17,6 +17,9 @@ const cashfree = new Cashfree(
   process.env.CASHFREE_SECRET_KEY
 );
 
+app.get("/", async (req, res) => {
+  res.status(200).json({ message: "welcome to cashpay" });
+});
 // ========================= CREATE ORDER ENDPOINT =========================
 app.post("/create-order", async (req, res) => {
   console.log("API /create-order called");
