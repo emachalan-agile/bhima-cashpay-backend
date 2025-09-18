@@ -6,7 +6,17 @@ import { Cashfree, CFEnvironment } from "cashfree-pg";
 
 const app = express();
 const { json } = pkg;
-app.use(cors());
+
+// Configure CORS with specific options to fix OTP sending issues
+app.use(cors({
+  origin: '*', // Allow all origins - you can restrict this to specific domains in production
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+}));
+
 app.use(json());
 dotenv.config();
 
