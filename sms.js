@@ -75,12 +75,12 @@ const sendSmsToApi = async (payload) => {
  */
 export const sendSMS = async (req, res) => {
   try {
-    const { name, number, otp, templateId } = req.body;
+    const { name, number, otp, templateId = "1707175594369642666" } = req.body;
 
     // Validate required fields
-    if (!name || !number || !templateId) {
+    if (!name || !number) {
       return res.status(400).json({
-        error: "Missing required fields: name, number, templateId",
+        error: "Missing required fields: name, number",
       });
     }
 
